@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
 
+  final _formkey = GlobalKey<FormState>();
+
   void loginUser() {
-    print(userNameController.text);
-    print(passwordController.text);
-    print('login successful');
+    if (_formkey.currentState != null && _formkey.currentState!.validate()) {
+      print(userNameController.text);
+      print(passwordController.text);
+      print('login successful');
+    }
   }
 
   final userNameController = TextEditingController();
@@ -37,33 +41,64 @@ class LoginPage extends StatelessWidget {
             const Image(
                 image: NetworkImage(
                     'https://media.licdn.com/dms/image/v2/D4E03AQGeuFgUOcH2BA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1719344633781?e=1729728000&v=beta&t=vZVg_ajzOYWb_rsTas5cU-r-AzANcQ-LhI-MFAZmRIw')),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                width: 400,
-                child: TextField(
-                  controller: userNameController,
-                  decoration: const InputDecoration(
-                      labelText: 'EMail Address', border: OutlineInputBorder()),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                width: 400,
-                child: TextField(
-                  controller: passwordController,
-                  obscureText: true,
-                  enableSuggestions: false,
-                  autocorrect: false,
-                  decoration: const InputDecoration(
-                      labelText: 'Password', border: OutlineInputBorder()),
-                ),
+            Form(
+              key: _formkey,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: SizedBox(
+                      width: 400,
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "Email must be provided";
+                          }
+                          if (value.length < 6 ||
+                              !value.contains('@') ||
+                              !value.contains('.')) {
+                            return "Invalid email address";
+                          }
+                          return null;
+                        },
+                        controller: userNameController,
+                        decoration: const InputDecoration(
+                            labelText: 'EMail Address',
+                            border: OutlineInputBorder()),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: SizedBox(
+                      width: 400,
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "Password must be provided";
+                          }
+                          if (value.length < 8 || value.length > 20) {
+                            return "Password must be between 8 and 20 characters in length.";
+                          }
+                          return null;
+                        },
+                        controller: passwordController,
+                        obscureText: true,
+                        enableSuggestions: false,
+                        autocorrect: false,
+                        decoration: const InputDecoration(
+                            labelText: 'Password',
+                            border: OutlineInputBorder()),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             ElevatedButton(
                 onPressed: loginUser,
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue.shade50),
                 child: const Text(
                   'Login',
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),

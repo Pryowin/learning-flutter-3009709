@@ -13,7 +13,7 @@ class ChatApp extends StatelessWidget {
     // TODO: implement build
     return MaterialApp(
       title: "Chat App",
-      theme: ThemeData(primarySwatch: Colors.blueGrey),
+      theme: ThemeData(primarySwatch: Colors.blue),
       /* home: const CounterStateful(
         buttonColor: Colors.amber,
       ), */
