@@ -26,7 +26,7 @@ class ChatPage extends StatelessWidget {
                             : Alignment.centerRight,
                         message: 'Hello');
                   })),
-          const ChatInput()
+          ChatInput()
         ],
       ),
     );

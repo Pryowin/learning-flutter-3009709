@@ -17,7 +17,7 @@ class ChatApp extends StatelessWidget {
       /* home: const CounterStateful(
         buttonColor: Colors.amber,
       ), */
-      home: LoginPage(),
+      home: ChatPage(),
       debugShowCheckedModeBanner: false,
     );
   }
