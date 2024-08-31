@@ -1,4 +1,5 @@
 import 'package:chat_app/chat_page.dart';
+import 'package:chat_app/utils/textfield_styles.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -10,11 +11,8 @@ class LoginPage extends StatelessWidget {
     if (_formkey.currentState != null && _formkey.currentState!.validate()) {
       print(userNameController.text);
       print(passwordController.text);
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const ChatPage(),
-          ));
+      Navigator.pushReplacementNamed(context, '/chat',
+          arguments: userNameController.text);
       print('login successful');
     }
   }
@@ -68,9 +66,10 @@ class LoginPage extends StatelessWidget {
                           return null;
                         },
                         controller: userNameController,
-                        decoration: const InputDecoration(
-                            labelText: 'EMail Address',
-                            border: OutlineInputBorder()),
+                        decoration: InputDecoration(
+                            hintStyle: ThemeTextStyle.loginTextFieldStyle,
+                            hintText: 'EMail Address',
+                            border: ThemeTextStyle.loginBorderFieldStyle),
                       ),
                     ),
                   ),
@@ -92,9 +91,10 @@ class LoginPage extends StatelessWidget {
                         obscureText: true,
                         enableSuggestions: false,
                         autocorrect: false,
-                        decoration: const InputDecoration(
-                            labelText: 'Password',
-                            border: OutlineInputBorder()),
+                        decoration: InputDecoration(
+                            hintStyle: ThemeTextStyle.loginTextFieldStyle,
+                            hintText: 'Password',
+                            border: ThemeTextStyle.loginBorderFieldStyle),
                       ),
                     ),
                   ),
