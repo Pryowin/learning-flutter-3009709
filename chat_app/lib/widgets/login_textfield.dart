@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:chat_app/utils/textfield_styles.dart';
 import 'package:flutter/material.dart';
 

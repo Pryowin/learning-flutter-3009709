@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:social_media_buttons/social_media_button.dart';
 import 'package:chat_app/utils/textfield_styles.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'widgets/login_textfield.dart';
 
 class LoginPage extends StatelessWidget {
@@ -20,6 +21,7 @@ class LoginPage extends StatelessWidget {
 
   final userNameController = TextEditingController();
   final passwordController = TextEditingController();
+  final _mainURL = 'https://dmburke.info';
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +88,31 @@ class LoginPage extends StatelessWidget {
                     backgroundColor: Colors.blue.shade50),
                 child: const Text('Login',
                     style:
-                        TextStyle(fontSize: 24, fontWeight: FontWeight.w300)))
+                        TextStyle(fontSize: 24, fontWeight: FontWeight.w300))),
+            Container(
+              margin: const EdgeInsets.all(20),
+              child: GestureDetector(
+                onTap: () async {
+                  if (!await launchUrlString(_mainURL)) {
+                    throw 'Could not launch web browser';
+                  }
+                },
+                child: Column(
+                  children: [
+                    const Text('Find us on'),
+                    Text(_mainURL),
+                  ],
+                ),
+              ),
+            ),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SocialMediaButton.linkedin(
+                    url: "https://www.linkedin.com/in/davidmartinburke/"),
+                SocialMediaButton.github(url: 'https://github.com/Pryowin')
+              ],
+            ),
           ]))
     ])));
   }

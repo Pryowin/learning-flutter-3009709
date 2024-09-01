@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ChatInput extends StatelessWidget {
-  ChatInput({Key? key}) : super(key: key);
+  ChatInput({super.key});
 
   final chatMessageController = TextEditingController();
 
@@ -13,6 +13,9 @@ class ChatInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 100,
+      decoration: const BoxDecoration(
+          color: Colors.black,
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -41,9 +44,6 @@ class ChatInput extends StatelessWidget {
           )
         ],
       ),
-      decoration: const BoxDecoration(
-          color: Colors.black,
-          borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
     );
   }
 }

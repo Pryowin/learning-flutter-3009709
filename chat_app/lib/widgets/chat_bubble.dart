@@ -12,6 +12,13 @@ class ChatBubble extends StatelessWidget {
       alignment: alignment,
       child: Container(
         padding: const EdgeInsets.all(24),
+        margin: const EdgeInsets.all(50),
+        decoration: const BoxDecoration(
+            color: Colors.grey,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(12),
+                topRight: Radius.circular(12),
+                bottomLeft: Radius.circular(12))),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -24,13 +31,6 @@ class ChatBubble extends StatelessWidget {
                     'https://media.licdn.com/dms/image/v2/D4E03AQGeuFgUOcH2BA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1719344633781?e=1729728000&v=beta&t=vZVg_ajzOYWb_rsTas5cU-r-AzANcQ-LhI-MFAZmRIw')),
           ],
         ),
-        margin: const EdgeInsets.all(50),
-        decoration: const BoxDecoration(
-            color: Colors.grey,
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(12),
-                topRight: Radius.circular(12),
-                bottomLeft: Radius.circular(12))),
       ),
     );
   }
