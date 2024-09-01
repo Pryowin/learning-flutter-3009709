@@ -42,9 +42,10 @@ class LoginPage extends StatelessWidget {
             fontWeight: FontWeight.bold,
             letterSpacing: 0.5),
       ),
-      const Image(
-          image: NetworkImage(
-              'https://media.licdn.com/dms/image/v2/D4E03AQGeuFgUOcH2BA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1719344633781?e=1729728000&v=beta&t=vZVg_ajzOYWb_rsTas5cU-r-AzANcQ-LhI-MFAZmRIw')),
+      Image.asset(
+        'assets/8bir9dlh.png',
+        height: 200,
+      ),
       Form(
           key: _formkey,
           child: Column(children: [
